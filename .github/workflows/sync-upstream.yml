@@ -15,6 +15,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: configure git identity
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+
       - name: fetch upstream and merge
         run: |
           git remote add upstream https://github.com/git/git-scm.com.git
