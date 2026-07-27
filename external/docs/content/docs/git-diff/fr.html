@@ -79,7 +79,7 @@ headings:
 </dd>
 <dt class="hdlist1" id="git-diff-spanclasssynopsiscodegitcodecodediffcodeemltoptionsgtemcode--cachedcodecode--merge-basecodeemltcommitgtemcode--codeemltchemingtemspan"> <a class="anchor" href="#git-diff-gitdiffoptions--cached--merge-basecommit--chemin"></a> <a class="anchor" href="#git-diff-spanclasssynopsiscodegitcodecodediffcodeemltoptionsgtemcode--cachedcodecode--merge-basecodeemltcommitgtemcode--codeemltchemingtemspan"></a><span class='synopsis'><code>git</code> <code>diff</code> [<em>&lt;options&gt;</em>] <code>--cached</code> [<code>--merge-base</code>] [<em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em>] [<code>--</code>] [<em>&lt;chemin&gt;</em>...]</span> </dt>
 <dd>
-<p>Cette forme sert à visualiser les modifications que vous avez indexées pour la prochaine validation vis-à-vis du <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em> nommé. Typiquement, vous voudriez comparer avec le <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em> (<span class='synopsis'><code>HEAD</code></span>) le plus récent, ce qui est fait automatiquement si vous ne spécifiez pas <span class="hover-term" data-term="commit">&lt;commit&gt;</span>. Si <span class='synopsis'><code>HEAD</code></span> n&#8217;existe pas (par exemple, des branches à naître) et si <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em> n&#8217;est pas fourni, les modifications indexées sont affichées. <span class='synopsis'><code>--staged</code></span> est synonyme de <span class='synopsis'><code>--cached</code></span>.</p>
+<p>Cette forme sert à visualiser les modifications que vous avez indexées pour le prochain commit vis-à-vis du <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em> nommé. Typiquement, vous voudriez comparer avec le <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em> (<span class='synopsis'><code>HEAD</code></span>) le plus récent, ce qui est fait automatiquement si vous ne spécifiez pas <span class="hover-term" data-term="commit">&lt;commit&gt;</span>. Si <span class='synopsis'><code>HEAD</code></span> n&#8217;existe pas (par exemple, des branches à naître) et si <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em> n&#8217;est pas fourni, les modifications indexées sont affichées. <span class='synopsis'><code>--staged</code></span> est synonyme de <span class='synopsis'><code>--cached</code></span>.</p>
 <div class="paragraph">
 <p>Si <span class='synopsis'><code>--merge-base</code></span> est donné, au lieu d&#8217;utiliser <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em>, utiliser la base de fusion de <em><span class="hover-term" data-term="commit">&lt;commit&gt;</span></em> et <span class='synopsis'><code>HEAD</code></span>. <span class='synopsis'><code>git</code> <code>diff</code> <code>--cached</code> <code>--merge-base</code> <code>A</code></span> est équivalent à <span class='synopsis'><code>git</code> <code>diff</code> <code>--cached</code> <code>$</code>(<code>git</code> <code>merge-base</code> <code>A</code> <code>HEAD</code>)</span>.</p>
 </div>
@@ -449,6 +449,9 @@ Ces modes peuvent être fournis comme une liste séparée par des virgules :</p
 </div>
 <div class="paragraph">
 <p>Notez qu&#8217;en dépit du nom du premier mode, la couleur est utilisée pour surligner les parties modifiées dans tous les modes, si activée.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;option <span class='synopsis'><code>--word-diff</code></span> opère en prenant le même diff ligne par ligne produit sans l&#8217;option, et en calculant les modifications mot-par-mot dans chaque section. Cela peu produire un diff plus gros que celui d&#8217;un outil de diff par mot spécialisé. Si Git acquiert une implémentation différente dans le futur, la sortie pourrait changer. Notez que ceci est similaire à l&#8217;option <span class='synopsis'><code>--diff-algorithm</code></span>, ce qui aussi changer la sortie.</p>
 </div>
 </dd>
 <dt class="hdlist1" id="git-diff-spanclasssynopsiscode--word-diff-regexcodeemltregexgtemspan"> <a class="anchor" href="#git-diff---word-diff-regexregex"></a> <a class="anchor" href="#git-diff-spanclasssynopsiscode--word-diff-regexcodeemltregexgtemspan"></a><span class='synopsis'><code>--word-diff-regex=</code><em>&lt;regex&gt;</em></span> </dt>
@@ -850,7 +853,7 @@ Cela surcharge les variables de configuration telles que configuration telle que
 </dl>
 </div>
 <div class="paragraph">
-<p>La commande <span class='synopsis'><code>git-diff-tree</code></span> débute sa sortie par l&#8217;empreinte de ce qui est comparé. Ensuite, toutes les commandes affichent une ligne par fichier modifié.</p>
+<p>Toutes les commandes affichent une ligne de sortie par fichier modifié, excepté <span class='synopsis'><code>git</code> <code>diff-files</code></span> dans le cas d&#8217;un fichier non-fusionné, qui affiche à la fois une ligne "non-fusionné" et "édité en place".</p>
 </div>
 <div class="paragraph">
 <p>une ligne affichée est formatée de la manière suivante :</p>
@@ -874,25 +877,25 @@ non fusionnné     :000000 000000 0000000 0000000 U fichier6</pre>
 <p>deux points.</p>
 </li>
 <li>
-<p>le mode pour "src" ; 000000 si c&#8217;est une création ou non fusionné.</p>
+<p>le mode pour "src" ; 000000 si c&#8217;est une création ou si "src" vient de l&#8217;index ou n&#8217;est pas fusionné.</p>
 </li>
 <li>
 <p>un espace.</p>
 </li>
 <li>
-<p>mode pour "dst" ; 000000 si suppression ou non-fusionné.</p>
+<p>mode pour "dst" ; 000000 si suppression ou non-fusionné, ou si "dst" vient de l&#8217;index ou n&#8217;est pas fusionné.</p>
 </li>
 <li>
 <p>un espace.</p>
 </li>
 <li>
-<p>sha1 de "src", 0{40} si création ou non fusionné.</p>
+<p>sha1 de "src", 0{40} si création ou non fusionné ou si "src" vient de l&#8217;index et n&#8217;est pas fusionné.</p>
 </li>
 <li>
 <p>un espace.</p>
 </li>
 <li>
-<p>sha1 de "dst", 0{40} si suppression, non fusionné ou "arbre de travail désynchronisé par rapport à l&#8217;index".</p>
+<p>sha1 de "dst", 0{40} si suppression si "dst" vient de l&#8217;index et n&#8217;est pas fusionné ou si "dst" vient de l&#8217;arbre de travail et est désynchronisé par rapport à l&#8217;index.</p>
 </li>
 <li>
 <p>un espace.</p>
@@ -1077,7 +1080,7 @@ non fusionnné     :000000 000000 0000000 0000000 U fichier6</pre>
 <p>Les noms de chemin avec des caractères « inhabituels » sont cités comme expliqué pour la variable de configuration <span class='synopsis'><code>core.quotePath</code></span> (voir <a href='{{< relurl "docs/git-config/fr" >}}'>git-config[1]</a>).</p>
 </li>
 <li>
-<p>Tous les fichiers <span class='synopsis'><code>fichier1</code></span> de la sortie font référence à des fichiers avant la validation, et tous les fichiers <span class='synopsis'><code>fichier2</code></span> font référence aux fichiers après la validation. Il est incorrect d&#8217;appliquer chaque modification à chaque fichier séquentiellement. Par exemple, cette rustine échange a et b :</p>
+<p>Tous les fichiers <span class='synopsis'><code>fichier1</code></span> de la sortie font référence à des fichiers avant le commit, et tous les fichiers <span class='synopsis'><code>fichier2</code></span> font référence aux fichiers après le commit. Il est incorrect d&#8217;appliquer chaque modification à chaque fichier séquentiellement. Par exemple, cette rustine échange a et b :</p>
 <div class="literalblock">
 <div class="content">
 <pre>diff --git a/a b/b
@@ -1333,7 +1336,7 @@ $ git diff AUTO_MERGE <b class="conum">(4)</b></pre>
 <div class="colist arabic">
 <ol>
 <li>
-<p>Modifications dans l&#8217;arbre de travail pas encore indexées pour la prochaine validation.</p>
+<p>Modifications dans l&#8217;arbre de travail pas encore indexées pour le prochain commit.</p>
 </li>
 <li>
 <p>Modifications entre l&#8217;index et votre dernier commit ; ce que vous valideriez si vous lanciez <span class='synopsis'><code>git</code> <code>commit</code></span> sans l&#8217;option <span class='synopsis'><code>-a</code></span>.</p>

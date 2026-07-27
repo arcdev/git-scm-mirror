@@ -264,7 +264,7 @@ L&#8217;option <span class='synopsis'><code>--edit</code></span> (ou <span class
 <dl>
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscode-mcodeemltmsggtemspan"> <a class="anchor" href="#git-merge--mmsg"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscode-mcodeemltmsggtemspan"></a><span class='synopsis'><code>-m</code> <em>&lt;msg&gt;</em></span> </dt>
 <dd>
-<p>Définir le message de commit à utiliser pour le commit de fusion (dans le cas où un commit est créé).</p>
+<p>Définir le message de validation à utiliser pour le commit de fusion (dans le cas où un commit est créé).</p>
 <div class="paragraph">
 <p>Si <span class='synopsis'><code>--log</code></span> est spécifié, un journal court des commits en cours de fusion sera ajouté au message spécifié.</p>
 </div>
@@ -279,7 +279,7 @@ L&#8217;option <span class='synopsis'><code>--edit</code></span> (ou <span class
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscode-Fcodeemltfichiergtemspan"> <a class="anchor" href="#git-merge--Ffichier"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscode-Fcodeemltfichiergtemspan"></a><span class='synopsis'><code>-F</code> <em>&lt;fichier&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscode--filecodeemltfichiergtemspan"> <a class="anchor" href="#git-merge---filefichier"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscode--filecodeemltfichiergtemspan"></a><span class='synopsis'><code>--file=</code><em>&lt;fichier&gt;</em></span> </dt>
 <dd>
-<p>Lire le message de commit à utiliser pour le commit de fusion (dans le cas où un commit est créé).</p>
+<p>Lire le message de validation à utiliser pour le commit de fusion (dans le cas où un commit est créé).</p>
 <div class="paragraph">
 <p>Si <span class='synopsis'><code>--log</code></span> est spécifié, un journal court des commits en cours de fusion sera ajouté au message spécifié.</p>
 </div>
@@ -618,7 +618,7 @@ Et voici une autre ligne qui est proprement résolue ou non modifiée.</pre>
 </dd>
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscoderenormalizecodespan"> <a class="anchor" href="#git-merge-renormalize"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscoderenormalizecodespan"></a><span class='synopsis'><code>renormalize</code></span> </dt>
 <dd>
-<p>Il s&#8217;agit d&#8217;une extraction et d&#8217;un validation virtuelle des trois étapes de tout fichier qui nécessite une fusion à trois points. Cette option est destinée à être utilisée lors de la fusion de branches avec différents filtres clean ou règles de normalisation de fin de ligne. Voir "Fusion de branches avec différents attributs de validation/extraction" dans <a href='{{< relurl "docs/gitattributes/fr" >}}'>gitattributes[5]</a> pour plus de détails.</p>
+<p>Il s&#8217;agit d&#8217;une extraction et d&#8217;un commit virtuel des trois étapes de tout fichier qui nécessite une fusion à trois points. Cette option est destinée à être utilisée lors de la fusion de branches avec différents filtres clean ou règles de normalisation de fin de ligne. Voir "Fusion de branches avec différents attributs de commit/extraction" dans <a href='{{< relurl "docs/gitattributes/fr" >}}'>gitattributes[5]</a> pour plus de détails.</p>
 </dd>
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscodeno-renormalizecodespan"> <a class="anchor" href="#git-merge-no-renormalize"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscodeno-renormalizecodespan"></a><span class='synopsis'><code>no-renormalize</code></span> </dt>
 <dd>
@@ -704,7 +704,7 @@ Et voici une autre ligne qui est proprement résolue ou non modifiée.</pre>
 </dd>
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscodemergedefaultToUpstreamcodespan"> <a class="anchor" href="#git-merge-mergedefaultToUpstream"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscodemergedefaultToUpstreamcodespan"></a><span class='synopsis'><code>merge.defaultToUpstream</code></span> </dt>
 <dd>
-<p>Si la fusion est appelée sans aucun argument de commit, fusionner les branches amont configurées pour la branche courante en utilisant leurs dernières valeurs observées stockées dans leurs branches de suivi à distance. Les valeurs de <span class='synopsis'><code>branch.</code><em>&lt;branche-courante&gt;</em><code>.merge</code></span> qui nomment les branches distantes nommées par <span class='synopsis'><code>branch.</code><em>&lt;branche-courante&gt;</em><code>.remote</code></span> sont consultées, puis elles sont mappées via <span class='synopsis'><code>remote.</code><em>&lt;distant&gt;</em><code>.fetch</code></span> vers leurs branches de suivi à distance correspondantes, et les extrémités de ces branches de suivi sont fusionnées. La valeur par défaut est true.</p>
+<p>Si la fusion est appelée sans aucun argument de commit, fusionner les branches amont configurées pour la branche courante en utilisant leurs dernières valeurs observées stockées dans leurs branches de suivi à distance. Les valeurs de <span class='synopsis'><code>branch.</code><em>&lt;branche-courante&gt;</em><code>.merge</code></span> qui nomment les branches distantes nommées par <span class='synopsis'><code>branch.</code><em>&lt;branche-courante&gt;</em><code>.remote</code></span> sont consultées, puis elles sont correspondancees via <span class='synopsis'><code>remote.</code><em>&lt;distant&gt;</em><code>.fetch</code></span> vers leurs branches de suivi à distance correspondantes, et les extrémités de ces branches de suivi sont fusionnées. La valeur par défaut est true.</p>
 </dd>
 <dt class="hdlist1" id="git-merge-spanclasssynopsiscodemergeffcodespan"> <a class="anchor" href="#git-merge-mergeff"></a> <a class="anchor" href="#git-merge-spanclasssynopsiscodemergeffcodespan"></a><span class='synopsis'><code>merge.ff</code></span> </dt>
 <dd>

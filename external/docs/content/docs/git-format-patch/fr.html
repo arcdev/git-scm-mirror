@@ -559,7 +559,7 @@ utilisez <span class='synopsis'><code>-M100%</code></span>. L&#8217;index de sim
 <dt class="hdlist1" id="git-format-patch--s"> <a class="anchor" href="#git-format-patch--s"></a>-s </dt>
 <dt class="hdlist1" id="git-format-patch---signoff"> <a class="anchor" href="#git-format-patch---signoff"></a>--signoff </dt>
 <dd>
-<p>Ajouter une ligne terminale <span class='synopsis'><code>Signed-off-by</code></span> au message de commit, en utilisant votre identité pour validateur. Référez-vous à l&#8217;option de contre-signature dans <a href='{{< relurl "docs/git-commit/fr" >}}'>git-commit[1]</a> pour plus d&#8217;information.</p>
+<p>Ajouter une ligne terminale <span class='synopsis'><code>Signed-off-by</code></span> au message de validation, en utilisant votre identité pour validateur. Référez-vous à l&#8217;option de contre-signature dans <a href='{{< relurl "docs/git-commit/fr" >}}'>git-commit[1]</a> pour plus d&#8217;information.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---stdout"> <a class="anchor" href="#git-format-patch---stdout"></a>--stdout </dt>
 <dd>
@@ -668,7 +668,7 @@ utilisez <span class='synopsis'><code>-M100%</code></span>. L&#8217;index de sim
 <dt class="hdlist1" id="git-format-patch---force-in-body-from"> <a class="anchor" href="#git-format-patch---force-in-body-from"></a>--force-in-body-from </dt>
 <dt class="hdlist1" id="git-format-patch---no-force-in-body-from"> <a class="anchor" href="#git-format-patch---no-force-in-body-from"></a>--no-force-in-body-from </dt>
 <dd>
-<p>Avec l&#8217;expéditeur du courriel spécifié par l&#8217;option <span class='synopsis'><code>--from</code></span>, par défaut, un "From :" dans le corps du message pour identifier l&#8217;auteur réel du commit est ajouté en haut du message du journal des validations si l&#8217;expéditeur est différent de l&#8217;auteur. Avec cette option, le "From :" dans le corps du message est ajouté même si l&#8217;expéditeur et l&#8217;auteur ont le même nom et la même adresse, ce qui peut aider si le logiciel de liste de diffusion confond l&#8217;identité de l&#8217;expéditeur. La valeur par défaut est la valeur de la variable de configuration <span class='synopsis'><code>format.forceInBodyFrom</code></span>.</p>
+<p>Avec l&#8217;expéditeur du courriel spécifié par l&#8217;option <span class='synopsis'><code>--from</code></span>, par défaut, un "From :" dans le corps du message pour identifier l&#8217;auteur réel du commit est ajouté en haut du message du journal des commits si l&#8217;expéditeur est différent de l&#8217;auteur. Avec cette option, le "From :" dans le corps du message est ajouté même si l&#8217;expéditeur et l&#8217;auteur ont le même nom et la même adresse, ce qui peut aider si le logiciel de liste de diffusion confond l&#8217;identité de l&#8217;expéditeur. La valeur par défaut est la valeur de la variable de configuration <span class='synopsis'><code>format.forceInBodyFrom</code></span>.</p>
 </dd>
 <dt class="hdlist1" id="git-format-patch---add-headerltenttegt"> <a class="anchor" href="#git-format-patch---add-headerentte"></a> <a class="anchor" href="#git-format-patch---add-headerltenttegt"></a>--add-header=&lt;entête&gt; </dt>
 <dd>
@@ -707,7 +707,7 @@ utilisez <span class='synopsis'><code>-M100%</code></span>. L&#8217;index de sim
 <dd>
 <p>Ajouter les notes (voir <a href='{{< relurl "docs/git-notes/fr" >}}'>git-notes[1]</a>) pour le commit après la ligne à trois tirets.</p>
 <div class="paragraph">
-<p>Le cas d&#8217;utilisation attendu de ceci est d&#8217;écrire une explication de soutien pour le commit qui n&#8217;appartient pas au message de journal de commit proprement dit, et de l&#8217;inclure avec la soumission de la rustine. Alors que l&#8217;on peut simplement écrire ces explications après l&#8217;exécution de <span class='synopsis'><code>format-patch</code></span> mais avant l&#8217;envoi, les conserver sous forme de notes Git permet de les maintenir entre les versions de la série de patchs (mais voir la discussion sur les options de configuration <span class='synopsis'><code>notes.rewrite</code></span> dans <a href='{{< relurl "docs/git-notes/fr" >}}'>git-notes[1]</a> pour utiliser ce flux de travail).</p>
+<p>Le cas d&#8217;utilisation attendu de ceci est d&#8217;écrire une explication de soutien pour le commit qui n&#8217;appartient pas au message de journal de validation proprement dit, et de l&#8217;inclure avec la soumission de la rustine. Alors que l&#8217;on peut simplement écrire ces explications après l&#8217;exécution de <span class='synopsis'><code>format-patch</code></span> mais avant l&#8217;envoi, les conserver sous forme de notes Git permet de les maintenir entre les versions de la série de patchs (mais voir la discussion sur les options de configuration <span class='synopsis'><code>notes.rewrite</code></span> dans <a href='{{< relurl "docs/git-notes/fr" >}}'>git-notes[1]</a> pour utiliser ce flux de travail).</p>
 </div>
 <div class="paragraph">
 <p>La valeur par défaut est <span class='synopsis'><code>--no-notes</code></span>, sauf si la configuration <span class='synopsis'><code>format.notes</code></span> est définie.</p>

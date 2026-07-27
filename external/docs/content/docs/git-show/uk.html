@@ -1172,6 +1172,9 @@ $ git log -2 --pretty=%h 4da45bef</pre>
 <div class="paragraph">
 <p>Зверніть увагу, що незважаючи на назву першого режиму, колір використовується для виділення змінених частин у всіх режимах, якщо вони ввімкнені.</p>
 </div>
+<div class="paragraph">
+<p>Опція <span class='synopsis'><code>--word-diff</code></span> працює таким чином: вона бере той самий построковий diff, що генерується без цієї опції, і обчислює зміни слово за словом у межах кожного фрагмента. Це може призвести до отримання diff, розмір якого перевищуватиме розмір diff, отриманий за допомогою спеціалізованого інструменту для порівняння слів. Якщо в майбутньому Git отримає іншу реалізацію, вихідні дані можуть змінитися. Зверніть увагу, що це схоже на опцію <span class='synopsis'><code>--diff-algorithm</code></span>, яка також може змінити вихідні дані.</p>
+</div>
 </dd>
 <dt class="hdlist1" id="git-show-spanclasssynopsiscode--word-diff-regexcodeemltregexgtemspan"> <a class="anchor" href="#git-show---word-diff-regexregex"></a> <a class="anchor" href="#git-show-spanclasssynopsiscode--word-diff-regexcodeemltregexgtemspan"></a><span class='synopsis'><code>--word-diff-regex=</code><em>&lt;regex&gt;</em></span> </dt>
 <dd>

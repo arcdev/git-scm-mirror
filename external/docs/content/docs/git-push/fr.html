@@ -25,6 +25,8 @@ headings:
   id: _distants
 - text: BRANCHES AMONT
   id: UPSTREAM-BRANCHES
+- text: GROUPES DISTANTS
+  id: REMOTE-GROUPS
 - text: SORTIE
   id: _sortie
 - text: RÈGLES DE POUSSÉE
@@ -67,10 +69,21 @@ headings:
 <h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Met à jour d&#8217;une ou de plusieurs branches, étiquettes ou autres références dans un dépôt distant depuis votre dépôt local, et envoie toutes les données nécessaires qui ne sont pas déjà sur le distant.</p>
+<p>Met à jour d&#8217;une ou de plusieurs branches, étiquettes ou autres références dans un ou plusieurs dépôts distants depuis votre dépôt local, et envoie toutes les données nécessaires qui ne sont pas déjà sur le distant.</p>
 </div>
 <div class="paragraph">
 <p>Le moyen le plus simple de pousser est <span class='synopsis'><code>git</code> <code>push</code> <em>&lt;distant&gt;</em> <em><span class="hover-term" data-term="branche">&lt;branche&gt;</span></em></span>. <span class='synopsis'><code>git</code> <code>push</code> <code>origin</code> <code>main</code></span> va pousser la branche locale <span class='synopsis'><code>main</code></span> à la branche <span class='synopsis'><code>main</code></span> sur le distant appelé <span class='synopsis'><code>origin</code></span>.</p>
+</div>
+<div class="paragraph">
+<p>Vous pouvez également pousser sur plusieurs distants à la fois en utilisant un groupe distant. Un groupe distant est une liste nommée de distants configurées via <span class='synopsis'><code>remotes.</code><em>&lt;nom&gt;</em></span> dans votre configuration git :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git config remotes.all-remotes "origin gitlab backup"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alors <span class='synopsis'><code>git</code> <code>push</code> <code>all-remotes</code></span> va pousser <span class='synopsis'><code>origin</code></span>, <span class='synopsis'><code>gitlab</code></span>, et <span class='synopsis'><code>backup</code></span> chacun à son tour, comme si vous aviez lancé <span class='synopsis'><code>git</code> <code>push</code></span> sur chacun individuellement. Chaque distant est poussé indépendamment en utilisant sa propre configuration de correspondance push. Il y a une entrée <span class='synopsis'><code>remotes.</code><em>&lt;groupe&gt;</em></span> dans le fichier de configuration. (Voir <a href='{{< relurl "docs/git-config/fr" >}}'>git-config[1]</a>).</p>
 </div>
 <div class="paragraph">
 <p>L&#8217;argument <span class='synopsis'><em><span class="hover-term" data-term="dépôt">&lt;dépôt&gt;</span></em></span> vaut par défaut l&#8217;amont pour la branche actuelle, ou <span class='synopsis'><code>origin</code></span> s&#8217;il n&#8217;y a pas d&#8217;amont configuré.</p>
@@ -106,7 +119,7 @@ headings:
 <dl>
 <dt class="hdlist1" id="git-push-emltdptgtem"> <a class="anchor" href="#git-push-dpt"></a> <a class="anchor" href="#git-push-emltdptgtem"></a><em><span class="hover-term" data-term="dépôt">&lt;dépôt&gt;</span></em> </dt>
 <dd>
-<p>Le dépôt "distant" qui est la destination d&#8217;une opération de poussée. Ce paramètre peut être soit une URL (voir la section <a href="#URLS">URLS GIT </a> ci-dessous) ou le nom d&#8217;un dépôt distant (voir la section <a href="#REMOTES">DISTANTS </a> ci-dessous).</p>
+<p>Le dépôt "distant" qui est la destination d&#8217;une opération de poussée. Ce paramètre peut être soit une URL (voir la section <a href="#URLS">URLS GIT </a> ci-dessous), le nom d&#8217;un dépôt distant (voir la section <a href="#REMOTES">DISTANTS </a> ci-dessous) ou le nom d&#8217;un groupe distant (voir la section <a href="#REMOTE-GROUPS">GROUPES DISTANTS</a> ci-dessous).</p>
 </dd>
 <dt class="hdlist1" id="git-push-spanclasssynopsisemltrf-de-spcgtemspan"> <a class="anchor" href="#git-push-rf-de-spc"></a> <a class="anchor" href="#git-push-spanclasssynopsisemltrf-de-spcgtemspan"></a><span class='synopsis'><em>&lt;réf-de-spéc&gt;</em>...</span> </dt>
 <dd>
@@ -597,7 +610,7 @@ git push --force-with-lease=master:base master:master</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Les lignes <span class='synopsis'><code>Push:</code></span>" sont utilisées par <span class='synopsis'><code>git</code> <code>push</code></span> et les lignes <span class='synopsis'><code>Pull:</code></span> sont utilisées par <span class='synopsis'><code>git</code> <code>pull</code></span> et <span class='synopsis'><code>git</code> <code>fetch</code></span>. Des lignes <span class='synopsis'><code>Push:</code></span> et <span class='synopsis'><code>Pull:</code></span> multiples peuvent être spécifiées pour des mappages supplémentaires de branches.</p>
+<p>Les lignes <span class='synopsis'><code>Push:</code></span>" sont utilisées par <span class='synopsis'><code>git</code> <code>push</code></span> et les lignes <span class='synopsis'><code>Pull:</code></span> sont utilisées par <span class='synopsis'><code>git</code> <code>pull</code></span> et <span class='synopsis'><code>git</code> <code>fetch</code></span>. Des lignes <span class='synopsis'><code>Push:</code></span> et <span class='synopsis'><code>Pull:</code></span> multiples peuvent être spécifiées pour des correspondances supplémentaires de branches.</p>
 </div>
 </div>
 <div class="sect2">
@@ -691,6 +704,53 @@ Les branches amont sont parfois appelées « information de suivi «, comme 
 </td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="REMOTE-GROUPS"><a class="anchor" href="#REMOTE-GROUPS"></a>GROUPES DISTANTS</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Un groupe distant est une liste nommée de distants configurés via <span class='synopsis'><code>remotes.</code><em>&lt;nom&gt;</em></span> dans votre configuration git :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>$ git config remotes.all-remotes "r1 r2 r3"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lorsque le nom d&#8217;un groupe est donné comme argument <span class='synopsis'><em><span class="hover-term" data-term="dépôt">&lt;dépôt&gt;</span></em></span>, la poussée est effectuée à chaque membre distant à son tour. Le principe déterminant est :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>git push &lt;options&gt; all-remotes &lt;args&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>est un équivalent grossier de :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>git push &lt;options&gt; r1 &lt;args&gt;
+git push &lt;options&gt; r2 &lt;args&gt;
+...
+git push &lt;options&gt; rN &lt;args&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>où r1, r2, &#8230;&#8203;, rN sont les membres de <span class='synopsis'><code>all-remotes</code></span>. Aucun comportement spécial n&#8217;est ajouté ou supprimé — le groupe est purement un raccourci pour exécuter la même commande push avec chaque distant membre individuellement.</p>
+</div>
+<div class="paragraph">
+<p>Lors de la poussée vers un groupe de plus d&#8217;un dépôt, Git émet un sous-processus <span class='synopsis'><code>git</code> <code>push</code></span> distinct pour chaque distant membre en séquence. Chaque sous-processus reçoit les mêmes drapeaux et spécs de réf que l&#8217;invocation originale. Cela signifie que les correspondances de poussée par distant configurées via <span class='synopsis'><code>remote.</code><em>&lt;nom&gt;</em><code>.push</code></span> ' et le mode miroir (<span class='synopsis'><code>remote.</code><em>&lt;nom&gt;</em><code>.mirror</code></span>) sont évalués indépendamment pour chaque distant, et qu&#8217;un distant miroir dans le groupe ne peut affecter le comportement de poussée d&#8217;autres distants non-miroir dans le même groupe.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;option <span class='synopsis'><code>--atomic</code></span> n&#8217;est pas prise en charge pour les poussées de groupe, car l&#8217;homogénéité ne peut être garantie que dans une seule connexion de transport à un seul distant. Git refusera l&#8217;invocation avec une erreur si <span class='synopsis'><code>--atomic</code></span> est combiné avec un nom de groupe.</p>
+</div>
+<div class="paragraph">
+<p>Si un membre distant échoue, que ce soit en raison d&#8217;un rejet par poussée (par exemple, une mise à jour pas en avance rapide, un crochet côté serveur refusant une ref) ou d&#8217;une erreur de connexion (par exemple, le dépôt n&#8217;existe pas, l&#8217;authentification échoue ou le réseau est inaccessible), Git signale l&#8217;erreur et continue de pousser vers les autres distants du groupe. Le code de sortie global est non-zéro si une poussée vers un membre échoue.</p>
+</div>
+<div class="paragraph">
+<p>Cela signifie que l&#8217;utilisateur est responsable de s&#8217;assurer que la séquence des poussées individuelles est logique. Si <span class='synopsis'><code>git</code> <code>push</code> <code>r1</code></span> échouerait pour un ensemble donné d&#8217;options et d&#8217;arguments, alors <span class='synopsis'><code>git</code> <code>push</code> <code>all-remotes</code></span> échouera de la même manière quand il atteindra r1. La poussée d&#8217;un groupe ne fait rien de spécial pour faire réussir une poussée individuelle défaillante.</p>
 </div>
 </div>
 </div>
@@ -1045,7 +1105,7 @@ Les branches amont sont parfois appelées « information de suivi «, comme 
 <dd>
 <p>pousser la branche actuelle vers le même nom sur le distant.</p>
 <div class="paragraph">
-<p>Si vous travaillez avec un flux de travail centralisé (en poussant sur le même dépôt que celui dont vous tirez, qui est généralement <span class='synopsis'><code>origin</code></span>), alors vous devez configurer une branche amont avec le même nom.</p>
+<p>Ce mode exige que le dépôt distant soit poussé. En repoussant sur le même distant duquel vous tirez, la branche actuelle doit également avoir une branche de suivi en amont avec le même nom.</p>
 </div>
 <div class="paragraph">
 <p>Ce mode est le mode par défaut depuis Git 2.0, et est l&#8217;option la plus sûre adaptée aux débutants.</p>

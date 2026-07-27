@@ -42,7 +42,7 @@ headings:
 <h2 id="_nom"><a class="anchor" href="#_nom"></a>NOM</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>git-log - Afficher les journaux de validation</p>
+<p>git-log - Afficher les journaux de commit</p>
 </div>
 </div>
 </div>
@@ -58,7 +58,7 @@ headings:
 <h2 id="_description"><a class="anchor" href="#_description"></a>DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Affiche les journaux de validation.</p>
+<p>Affiche les journaux de commit.</p>
 </div>
 <div class="paragraph">
 <p>Liste les commits qui sont accessibles en suivant les liens <span class='synopsis'><code>parents</code></span> du ou des commits donnés, mais exclut les commits qui sont accessibles depuis le ou les commits donnés avec un <em>^</em> devant eux. La sortie est donnée dans l&#8217;ordre chronologique inverse par défaut.</p>
@@ -96,7 +96,7 @@ $ git log A...B</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>La commande prend les options applicables à la commande <a href='{{< relurl "docs/git-rev-list/fr" >}}'>git-rev-list[1]</a> pour contrôler ce qui est montré et comment, et les options applicables aux commandes <a href='{{< relurl "docs/git-diff/fr" >}}'>git-diff[1]</a> pour contrôler la façon dont les modifications que chaque validation introduit sont affichées.</p>
+<p>La commande prend les options applicables à la commande <a href='{{< relurl "docs/git-rev-list/fr" >}}'>git-rev-list[1]</a> pour contrôler ce qui est montré et comment, et les options applicables aux commandes <a href='{{< relurl "docs/git-diff/fr" >}}'>git-diff[1]</a> pour contrôler la façon dont les modifications que chaque commit introduit sont affichées.</p>
 </div>
 </div>
 </div>
@@ -113,11 +113,24 @@ $ git log A...B</pre>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--decoratecodecodecodecodeshortcodecodefullcodecodeautocodecodenocodespan"> <a class="anchor" href="#git-log---decorateshortfullautono"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--decoratecodecodecodecodeshortcodecodefullcodecodeautocodecodenocodespan"></a><span class='synopsis'><code>--decorate</code>[<code>=</code>(<code>short</code>|<code>full</code>|<code>auto</code>|<code>no</code>)]</span> </dt>
 <dd>
 <p>Afficher les noms de réf de tous les commits qui sont montrés. Les valeurs possibles sont :</p>
-<div class="listingblock">
+<div class="openblock">
 <div class="content">
-<pre>`short`;; les préfixes des noms de référence 'refs/heads/', 'refs/tags/' et 'refs/remotes/' ne sont pas affichés.
-`full`;; le nom complet de la référence (y compris le préfixe) est affiché.
-`auto`;; si la sortie va à un terminal, les noms de référence sont affichés comme si `short` a été donné, sinon aucun nom de référence n'est affiché.</pre>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscodeshortcodespan"> <a class="anchor" href="#git-log-short"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodeshortcodespan"></a><span class='synopsis'><code>short</code></span> </dt>
+<dd>
+<p>les préfixes de réf <span class='synopsis'><code>refs/heads/</code></span>, <span class='synopsis'><code>refs/tags/</code></span> et <span class='synopsis'><code>refs/remotes/</code></span> ne sont pas affichés.</p>
+</dd>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscodefullcodespan"> <a class="anchor" href="#git-log-full"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodefullcodespan"></a><span class='synopsis'><code>full</code></span> </dt>
+<dd>
+<p>le nom complet (y compris le préfixe) et affiché.</p>
+</dd>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscodeautocodespan"> <a class="anchor" href="#git-log-auto"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodeautocodespan"></a><span class='synopsis'><code>auto</code></span> </dt>
+<dd>
+<p>si la sortie va à un terminal, les noms de réf sont affichés comme si l&#8217;on avait fourni <span class='synopsis'><code>short</code></span> , sinon aucun nom de réf n&#8217;est affiché.</p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -145,7 +158,7 @@ $ git log A...B</pre>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--use-mailmapcodespan"> <a class="anchor" href="#git-log---use-mailmap"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--use-mailmapcodespan"></a><span class='synopsis'><code>--use-mailmap</code></span> </dt>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--no-use-mailmapcodespan"> <a class="anchor" href="#git-log---no-use-mailmap"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--no-use-mailmapcodespan"></a><span class='synopsis'><code>--no-use-mailmap</code></span> </dt>
 <dd>
-<p>Utiliser le fichier mailmap pour mapper les noms d&#8217;auteurs et de validateurs et les adresses email avec les vrais noms et adresses email canoniques. Voir <a href='{{< relurl "docs/git-shortlog/fr" >}}'>git-shortlog[1]</a>.</p>
+<p>Utiliser le fichier mailmap pour correspondre les noms d&#8217;auteurs et de validateurs et les adresses email avec les vrais noms et adresses email canoniques. Voir <a href='{{< relurl "docs/git-shortlog/fr" >}}'>git-shortlog[1]</a>.</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--full-diffcodespan"> <a class="anchor" href="#git-log---full-diff"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--full-diffcodespan"></a><span class='synopsis'><code>--full-diff</code></span> </dt>
 <dd>
@@ -161,7 +174,10 @@ $ git log A...B</pre>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode-Lcodeemltdbutgtemcodecodeemltfingtemcodecodeemltfichiergtemspan"> <a class="anchor" href="#git-log--Ldbutfinfichier"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode-Lcodeemltdbutgtemcodecodeemltfingtemcodecodeemltfichiergtemspan"></a><span class='synopsis'><code>-L</code><em>&lt;début&gt;</em><code>,</code><em>&lt;fin&gt;</em><code>:</code><em>&lt;fichier&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode-Lcodeemltnom-de-fonctiongtemcodecodeemltfichiergtemspan"> <a class="anchor" href="#git-log--Lnom-de-fonctionfichier"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode-Lcodeemltnom-de-fonctiongtemcodecodeemltfichiergtemspan"></a><span class='synopsis'><code>-L:</code><em>&lt;nom-de-fonction&gt;</em><code>:</code><em>&lt;fichier&gt;</em></span> </dt>
 <dd>
-<p>Tracer l&#8217;évolution de la plage de lignes donnée par <span class='synopsis'><em>&lt;début&gt;</em><code>,</code><em>&lt;fin&gt;</em></span> (ou la regex de nom de la fonction <span class='synopsis'><em>&lt;nom-de-fonction&gt;</em></span>) dans le fichier <em>&lt;fichier&gt;</em>. Vous ne pouvez pas donner de limiteurs de spécificateur de chemin. Ceci est actuellement limité à une marche à partir d&#8217;une seule révision, c&#8217;est-à-dire que vous ne pouvez donner qu&#8217;aucun ou un seul argument de révision, <em>&lt;début&gt;</em> et <em>&lt;fin&gt;</em> (ou <em>&lt;nom-de-fonction&gt;</em>) doivent exister dans la révision de départ. Vous pouvez spécifier cette option plusieurs fois. Cette option implique <span class='synopsis'><code>--patch</code></span>. L&#8217;affichage de la rustine peut être supprimé en utilisant <span class='synopsis'><code>--no-patch</code></span>, mai les autres formats de diff (<span class='synopsis'><code>--raw</code></span>, <span class='synopsis'><code>--numstat</code></span>, <span class='synopsis'><code>--shortstat</code></span>, <span class='synopsis'><code>--dirstat</code></span>, <span class='synopsis'><code>--summary</code></span>, <span class='synopsis'><code>--name-only</code></span>, <span class='synopsis'><code>--name-status</code></span>, <span class='synopsis'><code>--check</code></span>) ne sont pas implantés actuellement.</p>
+<p>Tracer l&#8217;évolution de la plage de lignes donnée par <span class='synopsis'><em>&lt;début&gt;</em><code>,</code><em>&lt;fin&gt;</em></span> (ou la regex de nom de la fonction <span class='synopsis'><em>&lt;nom-de-fonction&gt;</em></span>) dans le fichier <em>&lt;fichier&gt;</em>. Vous ne pouvez pas donner de limiteurs de spécificateur de chemin. Ceci est actuellement limité à une marche à partir d&#8217;une seule révision, c&#8217;est-à-dire que vous ne pouvez donner qu&#8217;aucun ou un seul argument de révision, <em>&lt;début&gt;</em> et <em>&lt;fin&gt;</em> (ou <em>&lt;nom-de-fonction&gt;</em>) doivent exister dans la révision de départ. Vous pouvez spécifier cette option plusieurs fois. Cette option implique <span class='synopsis'><code>--patch</code></span>. L&#8217;affichage de la rustine peut être supprimé en utilisant <span class='synopsis'><code>--no-patch</code></span>. Les autres formats de diff qui ne produisent pas de rustine <span class='synopsis'><code>--raw</code></span>, <span class='synopsis'><code>--name-only</code></span>, <span class='synopsis'><code>--name-status</code></span> et <span class='synopsis'><code>--summary</code></span> sont pris en charge. Les formats de statistique (<span class='synopsis'><code>--stat</code></span>, <span class='synopsis'><code>--numstat</code></span>, <span class='synopsis'><code>--shortstat</code></span>, <span class='synopsis'><code>--dirstat</code></span>) ne sont pas implantés actuellement.</p>
+<div class="paragraph">
+<p>Les options de formatage de rustine telles que <span class='synopsis'><code>--word-diff</code></span>, <span class='synopsis'><code>--color-moved</code></span>, <span class='synopsis'><code>--no-prefix</code></span> et les options d&#8217;espace (<span class='synopsis'><code>-w</code></span>, <span class='synopsis'><code>-b</code></span>) sont prises en charge, ainsi que les options de pioche (<span class='synopsis'><code>-S</code></span>, <span class='synopsis'><code>-G</code></span>) et <span class='synopsis'><code>--diff-filter</code></span>.</p>
+</div>
 <div class="paragraph">
 <p><em>&lt;début&gt;</em> et <em>&lt;fin&gt;</em> peuvent prendre l&#8217;une de ces formes :</p>
 </div>
@@ -234,7 +250,7 @@ $ git log A...B</pre>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--sincecodeemltdategtemspan"> <a class="anchor" href="#git-log---sincedate"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--sincecodeemltdategtemspan"></a><span class='synopsis'><code>--since=</code><em>&lt;date&gt;</em></span> </dt>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--aftercodeemltdategtemspan"> <a class="anchor" href="#git-log---afterdate"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--aftercodeemltdategtemspan"></a><span class='synopsis'><code>--after=</code><em>&lt;date&gt;</em></span> </dt>
 <dd>
-<p>Afficher les commits plus récents que <em>&lt;date&gt;</em>.</p>
+<p>Afficher les commits plus récents que <em>&lt;date&gt;</em>. Le cas spécial <em>today</em> signifie depuis minuit.</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--since-as-filtercodeemltdategtemspan"> <a class="anchor" href="#git-log---since-as-filterdate"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--since-as-filtercodeemltdategtemspan"></a><span class='synopsis'><code>--since-as-filter=</code><em>&lt;date&gt;</em></span> </dt>
 <dd>
@@ -443,7 +459,7 @@ $ git log A...B</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Sous <span class='synopsis'><code>--pretty=oneline</code></span>, le message de commit est préfixé avec cette information sur la même ligne. Cette option ne peut pas être combinée avec <span class='synopsis'><code>--reverse</code></span>. Voir aussi <a href='{{< relurl "docs/git-reflog/fr" >}}'>git-reflog[1]</a>.</p>
+<p>Sous <span class='synopsis'><code>--pretty=oneline</code></span>, le message de validation est préfixé avec cette information sur la même ligne. Cette option ne peut pas être combinée avec <span class='synopsis'><code>--reverse</code></span>. Voir aussi <a href='{{< relurl "docs/git-reflog/fr" >}}'>git-reflog[1]</a>.</p>
 </div>
 <div class="paragraph">
 <p>Sous l&#8217;option <span class='synopsis'><code>--pretty=reference</code></span>, ces informations ne seront pas affichées du tout.</p>
@@ -823,7 +839,7 @@ $ git log A...B</pre>
 <p>La première question est celle de la performance. Contrairement à toutes les options précédentes, l&#8217;option <span class='synopsis'><code>--simplify-merges</code></span> nécessite de parcourir l&#8217;historique complet des commits avant de renvoyer un seul résultat. Cela peut rendre l&#8217;option difficile à utiliser pour les très grands dépôts.</p>
 </div>
 <div class="paragraph">
-<p>La deuxième question est celle de l&#8217;audit. Lorsque plusieurs contributeurs travaillent sur le même dépôt, il est important de savoir quels commits de fusion ont introduit un changement dans une branche importante. La fusion problématique <span class='synopsis'><code>R</code></span> ci-dessus n&#8217;est probablement pas le commit de fusion qui a été utilisé pour fusionner dans une branche importante. Au lieu de cela, la fusion <span class='synopsis'><code>N</code></span> a été utilisée pour fusionner <span class='synopsis'><code>R</code></span> et <span class='synopsis'><code>X</code></span> dans la branche importante. Ce commit peut avoir des informations sur la raison pour laquelle la modifcation <span class='synopsis'><code>X</code></span> est venu remplacer les changements de <span class='synopsis'><code>A</code></span> et <span class='synopsis'><code>B</code></span> dans son message de commit.</p>
+<p>La deuxième question est celle de l&#8217;audit. Lorsque plusieurs contributeurs travaillent sur le même dépôt, il est important de savoir quels commits de fusion ont introduit un changement dans une branche importante. La fusion problématique <span class='synopsis'><code>R</code></span> ci-dessus n&#8217;est probablement pas le commit de fusion qui a été utilisé pour fusionner dans une branche importante. Au lieu de cela, la fusion <span class='synopsis'><code>N</code></span> a été utilisée pour fusionner <span class='synopsis'><code>R</code></span> et <span class='synopsis'><code>X</code></span> dans la branche importante. Ce commit peut avoir des informations sur la raison pour laquelle la modifcation <span class='synopsis'><code>X</code></span> est venu remplacer les changements de <span class='synopsis'><code>A</code></span> et <span class='synopsis'><code>B</code></span> dans son message de validation.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -978,7 +994,7 @@ vous pouvez spécifier le format par défaut dans la configuration du dépôt <s
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--notescodecodecodeemltrefgtemspan"> <a class="anchor" href="#git-log---notesref"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--notescodecodecodeemltrefgtemspan"></a><span class='synopsis'><code>--notes</code>[<code>=</code><em>&lt;ref&gt;</em>]</span> </dt>
 <dd>
-<p>	Afficher les notes (voir <a href='{{< relurl "docs/git-notes/fr" >}}'>git-notes[1]</a>) qui annotent le commit, lors de l&#8217;affichage du message du journal de commit.
+<p>	Afficher les notes (voir <a href='{{< relurl "docs/git-notes/fr" >}}'>git-notes[1]</a>) qui annotent le commit, lors de l&#8217;affichage du message du journal de validation.
 C&#8217;est le comportement par défaut pour les commandes`git log`, <span class='synopsis'><code>git</code> <code>show</code></span> et <span class='synopsis'><code>git</code> <code>whatchanged</code></span> lorsqu&#8217;il n&#8217;y a pas d&#8217;option <span class='synopsis'><code>--pretty</code></span>, <span class='synopsis'><code>--format</code></span> ou <span class='synopsis'><code>--oneline</code></span> donnée sur la ligne de commande.</p>
 <div class="paragraph">
 <p>Par défaut, les notes affichées proviennent des références de notes listées dans les variables <span class='synopsis'><code>core.notesRef</code></span> et <span class='synopsis'><code>notes.displayRef</code></span> (ou les substitutions d&#8217;environnement correspondantes). Voir <a href='{{< relurl "docs/git-config/fr" >}}'>git-config[1]</a> pour plus de détails.</p>
@@ -1111,7 +1127,7 @@ C&#8217;est le comportement par défaut pour les commandes`git log`, <span class
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--graphcodespan"> <a class="anchor" href="#git-log---graph"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--graphcodespan"></a><span class='synopsis'><code>--graph</code></span> </dt>
 <dd>
-<p>Dessiner une représentation graphique en texte de l&#8217;historique du commit sur la gauche de la sortie. Cela peut entraîner l&#8217;impression de lignes supplémentaires entre les validations, afin que l&#8217;historique du graphique soit correctement tracé. Ne peut pas être combiné avec <span class='synopsis'><code>--no-walk</code></span>.</p>
+<p>Dessiner une représentation graphique en texte de l&#8217;historique du commit sur la gauche de la sortie. Cela peut entraîner l&#8217;impression de lignes supplémentaires entre les commits, afin que l&#8217;historique du graphique soit correctement tracé. Ne peut pas être combiné avec <span class='synopsis'><code>--no-walk</code></span>.</p>
 <div class="paragraph">
 <p>Cela permet la réécriture des parents, voir « Simplification de l&#8217;historique » ci-dessus.</p>
 </div>
@@ -1122,6 +1138,10 @@ C&#8217;est le comportement par défaut pour les commandes`git log`, <span class
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--show-linear-breakcodecodecodeemltbarriregtemspan"> <a class="anchor" href="#git-log---show-linear-breakbarrire"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--show-linear-breakcodecodecodeemltbarriregtemspan"></a><span class='synopsis'><code>--show-linear-break</code>[<code>=</code><em>&lt;barrière&gt;</em>]</span> </dt>
 <dd>
 <p>Lorsque <span class='synopsis'><code>--graph</code></span> n&#8217;est pas utilisé, toutes les branches de l&#8217;historique sont aplaties, ce qui peut rendre difficile de voir que les deux commits consécutifs n&#8217;appartiennent pas à une branche linéaire. Dans ce cas, cette option met une barrière entre les deux. Si <em>&lt;barrière&gt;</em> est spécifié, c&#8217;est la chaîne de caractères qui sera affichée à la place de celle par défaut.</p>
+</dd>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscode--graph-lane-limitcodeemltngtemspan"> <a class="anchor" href="#git-log---graph-lane-limitn"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--graph-lane-limitcodeemltngtemspan"></a><span class='synopsis'><code>--graph-lane-limit=</code><em>&lt;n&gt;</em></span> </dt>
+<dd>
+<p>Quand <span class='synopsis'><code>--graph</code></span> est utilisé, limite le nombre de pistes de graphe à afficher. Les pistes au delà de la limite sont remplacées par une marque de tronque <em>~</em>. Par défaut, la valeur est 0 (aucune limite), les valeurs négatives ou nulles sont ignorées et traitées comme sans limite.</p>
 </dd>
 </dl>
 </div>
@@ -1148,7 +1168,7 @@ C&#8217;est le comportement par défaut pour les commandes`git log`, <span class
 <p>C&#8217;est conçu pour être aussi compact que possible.</p>
 </div>
 </dd>
-<dt class="hdlist1" id="git-log-spanclasssynopsiscodeshortcodespan"> <a class="anchor" href="#git-log-short"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodeshortcodespan"></a><span class='synopsis'><code>short</code></span> </dt>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscodeshortcodespan-1"> <a class="anchor" href="#git-log-short-1"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodeshortcodespan-1"></a><span class='synopsis'><code>short</code></span> </dt>
 <dd>
 <div class="verseblock">
 <pre class="content"><em>commit &lt;empreinte&gt; Author: &lt;auteur&gt;</em>
@@ -1163,27 +1183,27 @@ C&#8217;est le comportement par défaut pour les commandes`git log`, <span class
 <em><em>_
 </em>    &lt;ligne-de-titre&gt;<em>
 </em><em>
-</em>    &lt;message-de-validation-complet&gt;_</em></pre>
+</em>    &lt;message-de-commit-complet&gt;_</em></pre>
 </div>
 </dd>
-<dt class="hdlist1" id="git-log-spanclasssynopsiscodefullcodespan"> <a class="anchor" href="#git-log-full"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodefullcodespan"></a><span class='synopsis'><code>full</code></span> </dt>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscodefullcodespan-1"> <a class="anchor" href="#git-log-full-1"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodefullcodespan-1"></a><span class='synopsis'><code>full</code></span> </dt>
 <dd>
 <div class="verseblock">
 <pre class="content"><em>commit &lt;empreinte&gt; Author: &lt;auteur&gt; Commit: &lt;validateur&gt;</em>
 <em><em>_
 </em>    &lt;ligne-de-titre&gt;<em>
 </em><em>
-</em>    &lt;message-de-validation-complet&gt;_</em></pre>
+</em>    &lt;message-de-commit-complet&gt;_</em></pre>
 </div>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodefullercodespan"> <a class="anchor" href="#git-log-fuller"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodefullercodespan"></a><span class='synopsis'><code>fuller</code></span> </dt>
 <dd>
 <div class="verseblock">
-<pre class="content"><em>commit &lt;empreinte&gt; Author: &lt;auteur&gt; AuthorDate: &lt;date d&#8217;auteur&gt; Commit: &lt;validateur&gt; CommitDate: &lt;date de validation&gt;</em>
+<pre class="content"><em>commit &lt;empreinte&gt; Author: &lt;auteur&gt; AuthorDate: &lt;date d&#8217;auteur&gt; Commit: &lt;validateur&gt; CommitDate: &lt;date de commit&gt;</em>
 <em><em>_
 </em>     &lt;ligne-de-titre&gt;<em>
 </em><em>
-</em>     &lt;message-de-validation-complet&gt;_</em></pre>
+</em>     &lt;message-de-commit-complet&gt;_</em></pre>
 </div>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodereferencecodespan"> <a class="anchor" href="#git-log-reference"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodereferencecodespan"></a><span class='synopsis'><code>reference</code></span> </dt>
@@ -1200,7 +1220,7 @@ C&#8217;est le comportement par défaut pour les commandes`git log`, <span class
 <div class="verseblock">
 <pre class="content"><em>From &lt;empreinte&gt; &lt;date&gt; From : &lt;auteur&gt; Date : &lt;date d&#8217;auteur&gt; Subject : [PATCH] &lt;ligne de titre&gt;</em>
 <em><em>_
-</em>&lt;message-de-validation-complet&gt;_</em></pre>
+</em>&lt;message-de-commit-complet&gt;_</em></pre>
 </div>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodemboxrdcodespan"> <a class="anchor" href="#git-log-mboxrd"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodemboxrdcodespan"></a><span class='synopsis'><code>mboxrd</code></span> </dt>
@@ -1425,31 +1445,31 @@ L'entête était &gt;&gt;t4119: test autocomputing -p&lt;n&gt; for traditional d
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodecdcodespan"> <a class="anchor" href="#git-log-cd"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodecdcodespan"></a><span class='synopsis'><code>%cd</code></span> </dt>
 <dd>
-<p>date de validation (le format respecte l&#8217;option --date=)</p>
+<p>date de commit (le format respecte l&#8217;option --date=)</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodecDcodespan"> <a class="anchor" href="#git-log-cD"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodecDcodespan"></a><span class='synopsis'><code>%cD</code></span> </dt>
 <dd>
-<p>date de validation, style RFC2822</p>
+<p>date de commit, style RFC2822</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodecrcodespan"> <a class="anchor" href="#git-log-cr"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodecrcodespan"></a><span class='synopsis'><code>%cr</code></span> </dt>
 <dd>
-<p>date de validation, date relative</p>
+<p>date de commit, date relative</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodectcodespan"> <a class="anchor" href="#git-log-ct"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodectcodespan"></a><span class='synopsis'><code>%ct</code></span> </dt>
 <dd>
-<p>date de validation, horodatage UNIX</p>
+<p>date de commit, horodatage UNIX</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodecicodespan"> <a class="anchor" href="#git-log-ci"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodecicodespan"></a><span class='synopsis'><code>%ci</code></span> </dt>
 <dd>
-<p>date de validation, format de type ISO 8601</p>
+<p>date de commit, format de type ISO 8601</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodecIcodespan"> <a class="anchor" href="#git-log-cI"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodecIcodespan"></a><span class='synopsis'><code>%cI</code></span> </dt>
 <dd>
-<p>date de validation, format ISO 8601 strict</p>
+<p>date de commit, format ISO 8601 strict</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodecscodespan"> <a class="anchor" href="#git-log-cs"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodecscodespan"></a><span class='synopsis'><code>%cs</code></span> </dt>
 <dd>
-<p>date de validation, format court (<span class='synopsis'><code>AAAA-MM-JJ</code></span>)</p>
+<p>date de commit, format court (<span class='synopsis'><code>AAAA-MM-JJ</code></span>)</p>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodechcodespan"> <a class="anchor" href="#git-log-ch"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodechcodespan"></a><span class='synopsis'><code>%ch</code></span> </dt>
 <dd>
@@ -2140,6 +2160,9 @@ Ces modes peuvent être fournis comme une liste séparée par des virgules :</p
 <div class="paragraph">
 <p>Notez qu&#8217;en dépit du nom du premier mode, la couleur est utilisée pour surligner les parties modifiées dans tous les modes, si activée.</p>
 </div>
+<div class="paragraph">
+<p>L&#8217;option <span class='synopsis'><code>--word-diff</code></span> opère en prenant le même diff ligne par ligne produit sans l&#8217;option, et en calculant les modifications mot-par-mot dans chaque section. Cela peu produire un diff plus gros que celui d&#8217;un outil de diff par mot spécialisé. Si Git acquiert une implémentation différente dans le futur, la sortie pourrait changer. Notez que ceci est similaire à l&#8217;option <span class='synopsis'><code>--diff-algorithm</code></span>, ce qui aussi changer la sortie.</p>
+</div>
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscode--word-diff-regexcodeemltregexgtemspan"> <a class="anchor" href="#git-log---word-diff-regexregex"></a> <a class="anchor" href="#git-log-spanclasssynopsiscode--word-diff-regexcodeemltregexgtemspan"></a><span class='synopsis'><code>--word-diff-regex=</code><em>&lt;regex&gt;</em></span> </dt>
 <dd>
@@ -2520,7 +2543,7 @@ Cela surcharge les variables de configuration telles que configuration telle que
 <p>Les noms de chemin avec des caractères « inhabituels » sont cités comme expliqué pour la variable de configuration <span class='synopsis'><code>core.quotePath</code></span> (voir <a href='{{< relurl "docs/git-config/fr" >}}'>git-config[1]</a>).</p>
 </li>
 <li>
-<p>Tous les fichiers <span class='synopsis'><code>fichier1</code></span> de la sortie font référence à des fichiers avant la validation, et tous les fichiers <span class='synopsis'><code>fichier2</code></span> font référence aux fichiers après la validation. Il est incorrect d&#8217;appliquer chaque modification à chaque fichier séquentiellement. Par exemple, cette rustine échange a et b :</p>
+<p>Tous les fichiers <span class='synopsis'><code>fichier1</code></span> de la sortie font référence à des fichiers avant le commit, et tous les fichiers <span class='synopsis'><code>fichier2</code></span> font référence aux fichiers après le commit. Il est incorrect d&#8217;appliquer chaque modification à chaque fichier séquentiellement. Par exemple, cette rustine échange a et b :</p>
 <div class="literalblock">
 <div class="content">
 <pre>diff --git a/a b/b
@@ -2814,15 +2837,15 @@ surcharger cette option avec <span class='synopsis'><code>--no-abbrev-commit</co
 <div class="content">
 <div class="dlist">
 <dl>
-<dt class="hdlist1" id="git-log-spanclasssynopsiscodeshortcodespan-1"> <a class="anchor" href="#git-log-short-1"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodeshortcodespan-1"></a><span class='synopsis'><code>short</code></span> </dt>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscodeshortcodespan-1-1"> <a class="anchor" href="#git-log-short-1-1"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodeshortcodespan-1-1"></a><span class='synopsis'><code>short</code></span> </dt>
 <dd>
 <p>les préfixes de réf <span class='synopsis'><code>refs/heads/</code></span>, <span class='synopsis'><code>refs/tags/</code></span> et <span class='synopsis'><code>refs/remotes/</code></span> ne sont pas affichés.</p>
 </dd>
-<dt class="hdlist1" id="git-log-spanclasssynopsiscodefullcodespan-1"> <a class="anchor" href="#git-log-full-1"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodefullcodespan-1"></a><span class='synopsis'><code>full</code></span> </dt>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscodefullcodespan-1-1"> <a class="anchor" href="#git-log-full-1-1"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodefullcodespan-1-1"></a><span class='synopsis'><code>full</code></span> </dt>
 <dd>
-<p>le nom complet (y compris le préfixe) sont imprimés.</p>
+<p>le nom complet (y compris le préfixe) sont affichés.</p>
 </dd>
-<dt class="hdlist1" id="git-log-spanclasssynopsiscodeautocodespan"> <a class="anchor" href="#git-log-auto"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodeautocodespan"></a><span class='synopsis'><code>auto</code></span> </dt>
+<dt class="hdlist1" id="git-log-spanclasssynopsiscodeautocodespan-1"> <a class="anchor" href="#git-log-auto-1"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodeautocodespan-1"></a><span class='synopsis'><code>auto</code></span> </dt>
 <dd>
 <p>si la sortie va à un terminal, les noms de réf sont affichés comme si l&#8217;on avait fourni <span class='synopsis'><code>short</code></span> , sinon aucun nom de réf n&#8217;est affiché.</p>
 </dd>
@@ -2883,7 +2906,7 @@ surcharger cette option avec <span class='synopsis'><code>--no-abbrev-commit</co
 </dd>
 <dt class="hdlist1" id="git-log-spanclasssynopsiscodenotesdisplayRefcodespan"> <a class="anchor" href="#git-log-notesdisplayRef"></a> <a class="anchor" href="#git-log-spanclasssynopsiscodenotesdisplayRefcodespan"></a><span class='synopsis'><code>notes.displayRef</code></span> </dt>
 <dd>
-<p>Depuis quelle réf (ou réfs, si un glob ou si spécifié plus d&#8217;une fois), en plus de la configuration réglée par défaut par <span class='synopsis'><code>core.notesRef</code>  <code>ou</code> <code>GIT_NOTES_REF</code>  <code>,</code> <code>lire</code> <code>les</code> <code>notes</code> <code>lors</code> <code>de</code> <code>l'affichage</code> <code>des</code> <code>messages</code> <code>de</code> <code>validation</code> <code>avec</code> <code>la</code> <code>famille</code> <code>de</code> <code>commandes</code> <code>git</code> <code>log</code></span>.</p>
+<p>Depuis quelle réf (ou réfs, si un glob ou si spécifié plus d&#8217;une fois), en plus de la configuration réglée par défaut par <span class='synopsis'><code>core.notesRef</code>  <code>ou</code> <code>GIT_NOTES_REF</code>  <code>,</code> <code>lire</code> <code>les</code> <code>notes</code> <code>lors</code> <code>de</code> <code>l'affichage</code> <code>des</code> <code>messages</code> <code>de</code> <code>validations</code> <code>avec</code> <code>la</code> <code>famille</code> <code>de</code> <code>commandes</code> <code>git</code> <code>log</code></span>.</p>
 <div class="paragraph">
 <p>Ce réglage peut être remplacé par la variable d&#8217;environnement <span class='synopsis'><code>GIT_NOTES_DISPLAY_REF</code></span> qui doit être une liste des réfs ou des globs séparés par des virgules.</p>
 </div>
